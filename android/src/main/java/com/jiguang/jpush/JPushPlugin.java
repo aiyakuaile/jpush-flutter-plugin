@@ -143,7 +143,8 @@ public class JPushPlugin implements MethodCallHandler {
         JPushInterface.setDebugMode(debug);
 
         // JPushInterface.init(registrar.context());     		// 初始化 JPush
-        JPushUPSManager.registerToken(registrar.context(),null,null,null,null);
+        String appKey = (String)map.get("appKey");
+        JPushUPSManager.registerToken(registrar.context(),appKey,null,null,null);
         
         String channel = (String)map.get("channel");
         JPushInterface.setChannel(registrar.context(), channel);
