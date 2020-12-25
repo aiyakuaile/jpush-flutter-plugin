@@ -10,6 +10,7 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import cn.jpush.android.data.JPushLocalNotification;
+import cn.jpush.android.ups.JPushUPSManager;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -141,7 +142,8 @@ public class JPushPlugin implements MethodCallHandler {
         boolean debug = (boolean)map.get("debug");
         JPushInterface.setDebugMode(debug);
 
-        JPushInterface.init(registrar.context());     		// 初始化 JPush
+        // JPushInterface.init(registrar.context());     		// 初始化 JPush
+        JPushUPSManager.registerToken(registrar.context(),null,null,null,null);
         
         String channel = (String)map.get("channel");
         JPushInterface.setChannel(registrar.context(), channel);
